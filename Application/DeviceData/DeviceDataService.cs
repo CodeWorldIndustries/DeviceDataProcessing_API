@@ -2,7 +2,6 @@
 using Domain.Devices.Domain;
 using Domain.Devices.Models.Company;
 using Domain.Devices.Models.Partners;
-using Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
@@ -10,11 +9,9 @@ namespace Application.Device.Data
 {
     public class DeviceDataService: IDeviceDataService
     {
-        private readonly IRepositoryService _repositoryService;
         private readonly IMapper _mapper;
-        public DeviceDataService(IRepositoryService repositoryService, IMapper mapper)
+        public DeviceDataService(IMapper mapper)
         {
-            _repositoryService = repositoryService;
             _mapper = mapper;
         }
 

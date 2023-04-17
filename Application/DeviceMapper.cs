@@ -32,38 +32,6 @@ namespace Application.Concentric
                 .ForMember(dest => dest.AverageTemperature, opt => opt.MapFrom(src => src.Devices.SelectMany(d => d.SensorData).Where(sd => sd.SensorType == "TEMP").Average(sd => sd.Value)))
                 .ForMember(dest => dest.HumidityCount, opt => opt.MapFrom(src => src.Devices.SelectMany(d => d.SensorData).Count(sd => sd.SensorType == "HUM")))
                 .ForMember(dest => dest.AverageHumidity, opt => opt.MapFrom(src => src.Devices.SelectMany(d => d.SensorData).Where(sd => sd.SensorType == "HUM").Average(sd => sd.Value)));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //CreateMap<PartnerData, IoTData>()
-            //   .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(src => src.PartnerId))
-            //   .ForMember(dest => dest.CompanyName, opt => opt.MapFrom(src => src.PartnerName))
-            //   .ForMember(dest => dest.DeviceId, opt => opt.MapFrom(src => src.Trackers[0].Id))
-            //   .ForMember(dest => dest.DeviceName, opt => opt.MapFrom(src => src.Trackers[0].Model))
-            //   .ForMember(dest => dest.FirstReadingDtm, opt => opt.MapFrom(src => src.Trackers[0].Sensors[0].Crumbs.First().CreatedDtm))
-            //   .ForMember(dest => dest.LastReadingDtm, opt => opt.MapFrom(src => src.Trackers[0].Sensors[0].Crumbs.Last().CreatedDtm));
-
-            //CreateMap<CompanyData, IoTData>()
-            //    .ForMember(dest => dest.DeviceId, opt => opt.MapFrom(src => src.))
-            //    .ForMember(dest => dest.DeviceName, opt => opt.MapFrom(src => src.Name))
-            //    .ForMember(dest => dest.FirstReadingDtm, opt => opt.MapFrom(src => src.SensorData.First().DateTime))
-            //    .ForMember(dest => dest.LastReadingDtm, opt => opt.MapFrom(src => src.SensorData.Last().DateTime));
-        //});
-
-
-
-
         }
-}
+    }
 }
