@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Configurations>Debug;Release;Production;QA;Develop</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Idp\**" />
+	  <Compile Remove="Kore\**" />
+	  <Compile Remove="OrbComm\**" />
+	  <EmbeddedResource Remove="Idp\**" />
+	  <EmbeddedResource Remove="Kore\**" />
+	  <EmbeddedResource Remove="OrbComm\**" />
+	  <None Remove="Idp\**" />
+	  <None Remove="Kore\**" />
+	  <None Remove="OrbComm\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="EntityFramework" Version="6.4.4" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>
