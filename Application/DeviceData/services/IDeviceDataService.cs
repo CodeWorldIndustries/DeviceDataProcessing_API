@@ -1,7 +1,7 @@
 ﻿using Domain.Devices.Domain;
 using Microsoft.AspNetCore.Http;
 
-namespace Application.Device.Data
+namespace Application.DeviceData.services
 {
     public interface IDeviceDataService
     {

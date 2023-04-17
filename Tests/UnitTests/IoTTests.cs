@@ -1,4 +1,4 @@
-﻿using Application.Device.Data;
+﻿using Application.DeviceData.services;
 using AutoMapper;
 using Domain.Devices.Domain;
 using Domain.Devices.Models.Company;
@@ -129,5 +129,4 @@ namespace Tests.UnitTests
             Assert.Equal(expectedResults.First().AverageHumidity, actualResults.First().AverageHumidity);
         }
     }
-
 }

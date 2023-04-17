@@ -1,4 +1,4 @@
-﻿using Application.Device.Data;
+﻿using Application.DeviceData.services;
 using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 

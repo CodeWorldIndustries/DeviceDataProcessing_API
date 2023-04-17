@@ -1,4 +1,4 @@
-using Application.Device.Data;
+using Application.DeviceData.services;
 using CrossCutting.Response;
 using Domain.Devices.Domain;
 using Microsoft.AspNetCore.Http;
