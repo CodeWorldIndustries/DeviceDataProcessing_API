@@ -12,7 +12,7 @@ namespace CrossCutting.Models
         /// <summary>
         /// Gets or sets the date the domain entity was created.
         /// </summary>
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         
         /// <summary>
         /// Gets or sets the date deleted for soft deletes.

@@ -52,7 +52,7 @@ namespace Application.DeviceData.services
             }
 
             // Return list
-            return iotDataList;
+            return iotDataList.OrderBy(x => x.CompanyId).ToList();
         }
     }
 }
