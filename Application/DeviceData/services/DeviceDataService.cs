@@ -39,9 +39,16 @@ namespace Application.DeviceData.services
             // Read files
             foreach (var file in files)
             {
-                var fileContent = await FileContentHelper.ReadFileContentAsync(file);
-                var iotData = FileContentHelper.DeserializeFileContent(fileContent, _mapper);
-                iotDataList.Add(iotData);
+                try
+                {
+                    var fileContent = await FileContentHelper.ReadFileContentAsync(file);
+                    var iotData = FileContentHelper.DeserializeFileContent(fileContent, _mapper);
+                    iotDataList.Add(iotData);
+                }
+                catch
+                {
+                    continue;
+                }
             }
 
             // Return list

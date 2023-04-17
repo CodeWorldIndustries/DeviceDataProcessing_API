@@ -1,8 +1,5 @@
 ﻿using CrossCutting.Interfaces;
 using CrossCutting.Models;
-using CrossCutting.Validators;
-using Domain.Devices.Contracts;
-using Newtonsoft.Json;
 
 namespace Domain.Devices.Domain
 {
@@ -77,20 +74,5 @@ namespace Domain.Devices.Domain
         /// Gets or sets the average humidity for the device.
         /// </summary>
         public double? AverageHumidity { get; set; }
-
-        /// <summary>
-        /// Creates the device.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>Device</returns>
-        public static IoTData Create(CreateIotDataRequest request)
-        {
-            // Validate request properties
-            ValidationHelper.ValidateProperties(request);
-            return new IoTData
-            {
-               
-            };
-        }
     }
 }

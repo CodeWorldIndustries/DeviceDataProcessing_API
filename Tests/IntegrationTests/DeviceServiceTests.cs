@@ -1,5 +1,4 @@
-﻿using Application.Device.Data;
-using Application.DeviceData.services;
+﻿using Application.DeviceData.services;
 using AutoMapper;
 using CrossCutting.Common.Response;
 using Domain.Devices.Domain;
