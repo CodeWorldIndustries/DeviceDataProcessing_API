@@ -5,8 +5,8 @@ name: '$(build.BuildId)'
 jobs:
 
 # Build the solution
-- job: DeviceMis
-  displayName: 'Build Device Microservice'
+- job: DeviceApp
+  displayName: 'Build Device App'
 
   pool:
     vmImage: windows-latest
