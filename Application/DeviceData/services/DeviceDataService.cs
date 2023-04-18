@@ -1,4 +1,5 @@
-﻿using Application.DeviceData.Helpers;
+﻿using Application.DeviceData.Contracts;
+using Application.DeviceData.Helpers;
 using AutoMapper;
 using Domain.Devices.Domain;
 using Infrastructure.Services;
@@ -23,6 +24,17 @@ namespace Application.DeviceData.services
         {
             _repositoryService = repositoryService;
             _mapper = mapper;
+        }
+
+        /// <summary>
+        /// Gets the data asynchronously.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        public async Task<List<IoTData>> GetDataAsync(GetDataSummaryRequest request)
+        {
+            var ioTData = await _repositoryService.GetAsync<IoTData>(d => d.CreatedDate >= request.From && d.CreatedDate < request.To);
+            return ioTData.OrderByDescending(x => x.CreatedDate).ToList();
         }
 
         /// <summary>
