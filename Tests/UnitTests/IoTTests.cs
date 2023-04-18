@@ -3,7 +3,9 @@ using AutoMapper;
 using Domain.Devices.Domain;
 using Domain.Devices.Models.Company;
 using Domain.Devices.Models.Partners;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
+using Moq;
 using System.Text;
 using Xunit;
 
@@ -16,7 +18,7 @@ namespace Tests.UnitTests
     {
         private DeviceDataService _deviceDataService;
         private readonly IMapper _mapper;
-
+        private readonly Mock<IRepositoryService> _repositoryService;
         public IoTDataServiceTests()
         {
             // Initialize AutoMapper configuration
@@ -48,7 +50,7 @@ namespace Tests.UnitTests
             });
             _mapper = config.CreateMapper();
 
-            _deviceDataService = new DeviceDataService(_mapper);
+            _deviceDataService = new DeviceDataService(_repositoryService.Object, _mapper);
         }
 
         /// <summary>

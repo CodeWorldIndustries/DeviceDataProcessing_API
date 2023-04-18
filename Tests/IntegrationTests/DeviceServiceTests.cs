@@ -4,11 +4,13 @@ using CrossCutting.Common.Response;
 using Domain.Devices.Domain;
 using Domain.Devices.Models.Company;
 using Domain.Devices.Models.Partners;
+using Infrastructure.Services;
 using IoTDeviceService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
@@ -20,6 +22,7 @@ namespace IntegrationTests
     {
         private readonly WebApplicationFactory<Startup> _factory;
         private readonly IMapper _mapper;
+        private readonly Mock<IRepositoryService> _repositoryService;
 
         public IoTControllerTests(WebApplicationFactory<Startup> factory)
         {
@@ -83,7 +86,7 @@ namespace IntegrationTests
             {
                 builder.ConfigureTestServices(services =>
                 {
-                    services.AddSingleton<IDeviceDataService>(new DeviceDataService(_mapper));
+                    services.AddSingleton<IDeviceDataService>(new DeviceDataService(_repositoryService.Object, _mapper));
                 });
             }).CreateClient();
 

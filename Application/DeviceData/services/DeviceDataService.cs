@@ -1,6 +1,7 @@
 ﻿using Application.DeviceData.Helpers;
 using AutoMapper;
 using Domain.Devices.Domain;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
 
 namespace Application.DeviceData.services
@@ -11,14 +12,16 @@ namespace Application.DeviceData.services
     /// <seealso cref="IDeviceDataService" />
     public class DeviceDataService : IDeviceDataService
     {
+        private readonly IRepositoryService _repositoryService;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DeviceDataService"/> class.
         /// </summary>
         /// <param name="mapper">The mapper.</param>
-        public DeviceDataService(IMapper mapper)
+        public DeviceDataService(IRepositoryService repositoryService, IMapper mapper)
         {
+            _repositoryService = repositoryService;
             _mapper = mapper;
         }
 
@@ -42,7 +45,8 @@ namespace Application.DeviceData.services
                 try
                 {
                     var fileContent = await FileContentHelper.ReadFileContentAsync(file);
-                    var iotData = FileContentHelper.DeserializeFileContent(fileContent, _mapper);
+                    var deserializedIoTData = FileContentHelper.DeserializeFileContent(fileContent, _mapper);
+                    var iotData = await _repositoryService.CreateAsync(IoTData.Create(deserializedIoTData));
                     iotDataList.Add(iotData);
                 }
                 catch

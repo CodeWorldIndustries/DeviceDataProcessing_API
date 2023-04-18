@@ -1,5 +1,6 @@
 ﻿using CrossCutting.Interfaces;
 using CrossCutting.Models;
+using Domain.Devices.Contracts;
 
 namespace Domain.Devices.Domain
 {
@@ -74,5 +75,32 @@ namespace Domain.Devices.Domain
         /// Gets or sets the average humidity for the device.
         /// </summary>
         public double? AverageHumidity { get; set; }
+
+        /// <summary>
+        /// Creates a new IoTData entity with the specified values.
+        /// </summary>
+        /// <param name="companyId">The ID of the company that owns the device.</param>
+        /// <param name="companyName">The name of the company that owns the device.</param>
+        /// <param name="deviceId">The ID of the device.</param>
+        /// <param name="deviceName">The name of the device model.</param>
+        /// <returns>The new IoTData entity.</returns>
+        public static IoTData Create(IoTData request)
+        {
+            var entity = new IoTData
+            {
+                CompanyId = request.CompanyId,
+                CompanyName = request.CompanyName,
+                DeviceId = request.DeviceId,
+                DeviceName = request.DeviceName,
+                FirstReadingDtm = request.FirstReadingDtm,
+                LastReadingDtm = request.LastReadingDtm,
+                TemperatureCount = request.TemperatureCount,
+                AverageTemperature = request.AverageTemperature,
+                HumidityCount = request.HumidityCount,
+                AverageHumidity = request.AverageHumidity,
+                CreatedDate = DateTime.UtcNow
+            };
+            return entity;
+        }
     }
 }
